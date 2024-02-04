@@ -1,0 +1,82 @@
+<CardButton@Button>:
+    background_normal: ''
+    background_color: 0.482, 0.275, 0.686, 1  # Tom de roxo
+    color: 1, 1, 1, 1
+    size_hint_y: None
+    height: '72dp'  # Ajuste a altura conforme necessário
+    width: '150dp'  # Ajuste a largura conforme necessário
+    elevation: 10
+    radius: [15,]
+    ripple_behavior: True
+
+<DashboardScreen>:
+    Image:
+        source: "back.jpg"
+        size_hint: None, None
+        size: "360dp", "640dp"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        padding: 10
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '48dp'
+            spacing: '65dp'
+
+            MDLabel:
+                text: "Iago Express"
+                size_hint_x: 2
+                color: 1, 1, 1, 1
+                font_size: '24sp'
+                bold: True
+                italic: True
+
+            MDIcon:
+                icon: 'truck'
+                halign: 'center'
+                theme_text_color: 'Custom'
+                text_color: 1, 1, 1, 1
+                size_hint_x: None
+                width: dp(48)
+                pos_hint: {'center_y': 0.5}
+
+            MDIconButton:
+                icon: "bell-outline"
+                theme_text_color: "Custom"
+                text_color: 1, 1, 1, 1
+                pos_hint: {'center_y': 0.5}
+                ripple_behavior: True  # Adicionando o mesmo efeito de clique da notificação
+
+        ScrollView:
+            GridLayout:
+                cols: 1
+                spacing: 10
+                padding: 10
+
+                CardButton:
+                    text: 'Adicionar Pedido'
+                    icon: 'clipboard-check-outline'
+                    on_press: root.adicionar_pedido()
+                    ripple_behavior: True  # Adicionando o mesmo efeito de clique da notificação
+
+                CardButton:
+                    text: 'Analisar Pedido'
+                    icon: 'truck-delivery'
+                    on_press: root.analisar_pedidos()
+                    ripple_behavior: True  # Adicionando o mesmo efeito de clique da notificação
+
+                CardButton:
+                    text: 'Rota De Entrega'
+                    icon: 'check-circle-outline'
+                    on_press: root.pedidos_em_rota()
+                    ripple_behavior: True  # Adicionando o mesmo efeito de clique da notificação
+
+                CardButton:
+                    text: 'Pedidos Concluídos'
+                    icon: 'plus'
+                    on_press: root.pedidos_concluidos()
+                    ripple_behavior: True  # Adicionando o mesmo efeito de clique da notificação

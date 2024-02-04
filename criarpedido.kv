@@ -1,0 +1,50 @@
+<CriarPedidoScreen>:
+    Image:
+        source: "back.jpg"
+        size_hint: None, None
+        size: "360dp", "640dp"
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+ 
+    MDLabel:
+        text: "Criar Pedido"
+        font_size: "48dp"
+        halign: "center"
+        color: "#600170" 
+        pos_hint: {'center_y':.8}   
+    MDTextField:
+        id: codigo_pedido_field
+        hint_text: "Código Do Pedido"
+        icon_right: 'qrcode'
+        font_size: "20dp"
+        size_hint_x: 0.85
+        pos_hint: {"center_x": 0.5, "center_y": 0.65}
+        on_text_validate: root.escanear_qr_code()  # Chamando a função ao pressionar Enter no campo de texto
+    MDTextField:
+        id: nome_cliente_field  # Corrigido o ID do campo de texto
+        hint_text: "Nome Do Cliente"
+        icon_right: 'account'
+        font_size: "20dp"
+        size_hint_x: 0.85
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    BoxLayout:
+        size_hint: .85, None    
+        height: "30dp"  
+        pos_hint: {"center_x": .5, "center_y": .4}
+        spacing: "5dp"
+    BoxLayout:
+        size_hint: .6, None    
+        height: "30dp"  
+        pos_hint: {"center_x": .5, "center_y": .3}
+        spacing: "5dp"
+        MDIconButton:
+            icon: "camera"
+            pos_hint: {"center_y": 0.5}
+            user_font_size: "24sp"
+            on_release: root.abrir_camera()  # Chama a função para abrir a câmera
+        MDFlatButton:
+            text: "Criar Pedido"
+            font_size: "22dp"
+            size_hint_x: 1
+            md_bg_color: "#600170"
+            on_release: root.criar_pedido1(codigo_pedido_field.text, nome_cliente_field.text)
+  # Chama a função ao pressionar o botão
